@@ -6,7 +6,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-import javafx.scene.chart.ValueAxis;
+
+//Change applied test
 
 
 public class Client {
