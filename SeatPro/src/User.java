@@ -1,11 +1,18 @@
+import java.io.Serializable;
 
-public class User {
+
+public class User implements Serializable{
 
 	private int u_id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String pass;
+	
+	
+	public void setU_id(int uid) {
+		this.u_id=uid;
+	}
 	public int getU_id() {
 		return u_id;
 	}
