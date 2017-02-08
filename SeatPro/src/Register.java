@@ -70,18 +70,47 @@ public class Register extends JFrame {
 	      JButton registerbtn = new JButton("Register");
 	      registerbtn.addActionListener(new ActionListener() {
 			
+	    	
 	
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-			if (firstname.getText().equals(null) || lastName.getText().equals(null) || 
-		        email.getText().equals(null) || password.getPassword().equals(null) || 
-		        passwordRewrite.getPassword().equals(null)){
+			if (firstname.getText().isEmpty() || lastName.getText().isEmpty() || 
+		        email.getText().isEmpty()|| password.getText().isEmpty() || 
+		        passwordRewrite.getText().isEmpty()){
 				
-				JOptionPane.showMessageDialog(new Register(), "Please enter all information");
+				JOptionPane.showMessageDialog(null, "Please enter all information","Error Message", JOptionPane.WARNING_MESSAGE);
 			}	
+			
+			else if (firstname.getText().length()<6 || lastName.getText().length()<6 || 
+			        email.getText().length()<6|| password.getText().length()<6 || 
+			        passwordRewrite.getText().length()<6 ||
+			        firstname.getText().length()>12 || lastName.getText().length()>12 || 
+			        email.getText().length()>12|| password.getText().length()>12 || 
+			        passwordRewrite.getText().length()>12 ){
+				
+				JOptionPane.showMessageDialog(null, "Please Make Sure First Name, Last Name, Email and Password should be within the range of 6 to 12 characters","Error Message", JOptionPane.WARNING_MESSAGE);
+			}
+				
+			else if (!password.getText().equals(passwordRewrite.getText())){
+			JOptionPane.showMessageDialog(null, "Please make sure password and re-write password are the same","Error Message", JOptionPane.WARNING_MESSAGE);
+			}
+			
+			else if (!isValidEmailAddress(email.getText())){
+				
+				JOptionPane.showMessageDialog(null, "Please enter a valid email","Error Message", JOptionPane.WARNING_MESSAGE);
+				
+				//checking the email in the data base
 				
 				
 			}
+			
+			
+			
+			}
+			
+						
+			
 		});
 	      JButton backbtn = new JButton("Go Back");
 	      backbtn.addActionListener(new ActionListener() {
@@ -188,5 +217,12 @@ public class Register extends JFrame {
 	      
 	    }
 	
+		
 	
+	 public boolean isValidEmailAddress(String email) {
+         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+         java.util.regex.Matcher m = p.matcher(email);
+         return m.matches();
+  }
 }
