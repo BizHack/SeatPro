@@ -100,12 +100,16 @@ public class Register extends JFrame {
 				
 				JOptionPane.showMessageDialog(null, "Please enter a valid email","Error Message", JOptionPane.WARNING_MESSAGE);
 				
-				//checking the email in the data base
+				
 				
 				
 			}
 			
-			
+			else {
+				//checking the email in the data base
+				
+				
+			}
 			
 			}
 			
