@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.List;
 
 import javax.swing.border.EtchedBorder;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -20,6 +21,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Scanner;
+
 
 public class Login extends JFrame {
 	/**
@@ -156,6 +159,29 @@ public class Login extends JFrame {
 		    	
 		    		
 		    		System.out.println(serverMessage);
+		    		
+		    		if (serverMessage.equals("Correct password")) {
+						
+						java.util.List<Seat> sList= (java.util.List<Seat>) inFromServer.readObject();
+						
+						for(Seat s: sList){
+							System.out.println(s);
+						}
+						
+						
+					}
+		    		System.out.println("Please enter your row number:");
+		    		Scanner sc= new Scanner(System.in);
+		    		int r=sc.nextInt();
+		    		
+		    		System.out.println("Please enter your column number");
+		    		Scanner sc1= new Scanner(System.in);
+		    		int c=sc1.nextInt();
+		    		
+		    		Seat s= new Seat();
+		    		
+		    		
+		    		
 					
 					
 				} catch (UnknownHostException e1) {

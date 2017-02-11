@@ -113,6 +113,11 @@ public class Server {
 			// p.print(temp);
 
 			outToClient.writeObject(message);
+			
+			SeatDao sDao= new SeatDao();
+			java.util.List<Seat> sList= sDao.getAllSeats();
+			
+			outToClient.writeObject(sList);
 
 			// System.out.println(number);
 
